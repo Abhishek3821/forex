@@ -2,19 +2,20 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import Button from './Button';
 import { navItems } from '../data/siteData';
-import { vtxLogo, vtxPrimeLogo } from '../assests';
+import { vtxLogo } from '../assests';
+import { Link } from 'react-router-dom';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/82 backdrop-blur-2xl">
       <nav className="container-page flex h-20 items-center justify-between" aria-label="Primary navigation">
-        <a href="#" className="group flex items-center gap-3" aria-label="VTX Prime home">
+        <Link to="/" className="group flex items-center gap-3" aria-label="VTX Prime home" onClick={() => setOpen(false)}>
           {/* <span className="grid h-10 w-10 place-items-center rounded-md border border-primary/40 bg-primary/15 shadow-glow">
             <span className="font-display text-lg font-bold text-white">V</span>
           </span> */}
           <img src={vtxLogo} alt="" className="grid h-16 w-auto place-items-center rounded-md " />
           <span className="font-display text-lg font-bold tracking-[0.2em] text-white">VTX PRIME</span>
-        </a>
+        </Link>
         <div className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
             <div key={item.label} className="group relative">
