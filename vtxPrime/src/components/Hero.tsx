@@ -1,4 +1,4 @@
-import { ArrowUpRight, CandlestickChart, Cpu, Shield, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, CandlestickChart, Cpu, Shield, TrendingUp, type LucideIcon } from 'lucide-react';
 import Button from './Button';
 import { metrics } from '../data/siteData';
 import ImageCarousel from './ImageCarsouel';
@@ -105,12 +105,12 @@ export default function Hero() {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-text-secondary">
-              {[
+              {([
                 [Shield, 'Security-first'],
                 [Cpu, 'API-native'],
                 [TrendingUp, 'Execution-focused'],
                 [ArrowUpRight, 'Global deployment'],
-              ].map(([Icon, label]) => (
+              ] as Array<[LucideIcon, string]>).map(([Icon, label]) => (
                 <span key={label} className="inline-flex items-center gap-2 rounded-md border border-border bg-card/60 px-3 py-2">
                   <Icon className="h-4 w-4 text-primary-light" aria-hidden="true" />
                   {label}
