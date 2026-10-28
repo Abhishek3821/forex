@@ -1,0 +1,43 @@
+import { useId, useState } from 'react';
+import { Activity, BarChart3, Check, Code2, Layers3, Network, ShieldCheck, Users, WalletCards } from 'lucide-react';
+
+export function PriceChart({ compact = false, alternate = false }: { compact?: boolean; alternate?: boolean }) {
+  const id = useId().replace(/:/g, '');
+  const levels = alternate ? [92, 78, 85, 62, 69, 43, 51, 40, 63, 52, 36, 45, 21, 33, 16, 26, 12, 28, 19, 8] : [115, 104, 111, 83, 94, 69, 79, 58, 70, 84, 62, 72, 49, 61, 39, 50, 26, 37, 22, 12];
+  return <svg viewBox="0 0 500 180" className={`trading-price-chart ${compact ? 'is-compact' : ''}`} role="img" aria-label="Illustrative price chart, not live market data">
+    <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1"><stop stopColor="#32c5ec" stopOpacity=".24" /><stop offset="1" stopColor="#32c5ec" stopOpacity="0" /></linearGradient></defs>
+    <g stroke="#263a50" strokeWidth=".5">{[30, 70, 110, 150].map(y => <path key={y} d={`M0 ${y}H500`} />)}{[50, 150, 250, 350, 450].map(x => <path key={x} d={`M${x} 0V180`} />)}</g>
+    <path d={`M0 ${levels[0] + 28} ${levels.map((y, i) => `L${i * 26} ${y + 28}`).join(' ')} L500 180H0Z`} fill={`url(#${id})`} />
+    {levels.map((y, i) => { const up = i % 3 !== 1; return <g key={i} stroke={up ? '#42d4c1' : '#fa7487'} fill={up ? '#42d4c1' : '#fa7487'}><path d={`M${i * 26 + 6} ${y + 2}v32`} /><rect x={i * 26 + 1} y={y + 8} width="10" height={up ? 14 : 19} rx="1" /></g>; })}
+    <path d={`M0 ${levels[0] + 28} ${levels.map((y, i) => `L${i * 26} ${y + 28}`).join(' ')}`} fill="none" stroke="#41baff" strokeWidth="1.5" opacity=".7" />
+  </svg>;
+}
+
+export function TradingTerminal({ compact = false, instruments }: { compact?: boolean; instruments?: Record<string, string> }) {
+  const quotes = instruments || { 'EUR/USD': '1.10860', 'GBP/USD': '1.28420', 'USD/JPY': '149.250' };
+  const [instrument, setInstrument] = useState(Object.keys(quotes)[0]);
+  const [timeframe, setTimeframe] = useState('1H');
+  return <div className={`trading-terminal ${compact ? 'terminal-compact' : ''}`}>
+    <div className="terminal-titlebar"><span className="terminal-dots"><i /><i /><i /></span><span>VTX PRIME / TRADER WORKSPACE</span><span className="terminal-demo">DEMO</span></div>
+    <div className="terminal-main"><div className="terminal-watchlist"><span className="terminal-label">WATCHLIST</span>{Object.keys(quotes).map(symbol => <button key={symbol} type="button" onClick={() => setInstrument(symbol)} aria-pressed={instrument === symbol} className={instrument === symbol ? 'is-active' : ''}><span>{symbol}</span><small>{quotes[symbol]}</small></button>)}</div><div className="terminal-chart"><div className="terminal-instrument"><div><span>{instrument}</span><strong>{quotes[instrument]}</strong></div><span className="terminal-market-label">Illustrative prices</span></div><div className="terminal-timeframes" aria-label="Chart timeframe">{['15M', '1H', '4H', '1D'].map(item => <button key={item} type="button" onClick={() => setTimeframe(item)} aria-pressed={timeframe === item} className={timeframe === item ? 'is-active' : ''}>{item}</button>)}</div><PriceChart alternate={timeframe !== '1H' || instrument !== 'EUR/USD'} /><div className="terminal-chart-footer"><span>{instrument} · {timeframe}</span><span>Orders / Positions / History</span></div></div></div>
+    <div className="terminal-bottom"><span><span className="terminal-status-dot" />Concept preview</span><span>Market data and trading are not connected</span></div>
+  </div>;
+}
+
+export function PhonePreview({ challenge = false, market = 'forex' }: { challenge?: boolean; market?: 'forex' | 'metals' }) {
+  const [tab, setTab] = useState('Overview');
+  return <div className="trading-phone-stage"><div className="phone-orbit phone-orbit-one" /><div className="phone-orbit phone-orbit-two" /><div className="trading-phone"><div className="phone-island" /><div className="phone-status"><span>9:41</span><span>● ▰</span></div><div className="phone-brand"><span className="phone-mark">V</span><span>VTX PRIME</span></div><div className="phone-greeting">{challenge ? 'Your next milestone' : 'Your markets. Your workspace.'}</div><div className="phone-account-label">{challenge ? 'EVALUATION ACCOUNT' : 'TRADING WORKSPACE'}</div><div className="phone-balance">{challenge ? '$50,000.00' : market === 'metals' ? 'XAU / USD' : 'EUR / USD'}</div><span className="phone-demo-tag">ILLUSTRATIVE PREVIEW</span><div className="phone-tabbar">{['Overview', 'Progress'].map(item => <button key={item} type="button" aria-pressed={tab === item} onClick={() => setTab(item)} className={tab === item ? 'is-active' : ''}>{item}</button>)}</div>{tab === 'Overview' ? <><PriceChart compact /><div className="phone-mini-stats"><div><span>{challenge ? 'Daily loss limit' : 'Watchlist'}</span><strong>{challenge ? 'Configured' : '3 markets'}</strong></div><div><span>{challenge ? 'Profit target' : 'Workspace'}</span><strong>{challenge ? 'In progress' : 'Ready to explore'}</strong></div></div></> : <div className="phone-progress">{[['Account setup', 'Complete', '100%'], ['Rule review', 'In progress', '65%'], ['Next milestone', 'Planned', '35%']].map(([title, label, width]) => <div key={title}><span>{title}<small>{label}</small></span><div><i style={{ width }} /></div></div>)}<p>Sample progress. Rules and results depend on your programme.</p></div>}<div className="phone-navbar"><BarChart3 size={17} /><Activity size={17} /><Layers3 size={17} /><Users size={17} /></div></div><div className="phone-floating-tag"><ShieldCheck size={17} /><span>{challenge ? 'Clear rules. Clear progress.' : 'A connected mobile experience.'}</span></div></div>;
+}
+
+export function OperationsPreview({ variant = 'crm' }: { variant?: 'crm' | 'payments' | 'web' | 'code' }) {
+  const rows = variant === 'payments' ? ['Deposit request', 'Provider review', 'Reconciliation'] : variant === 'web' ? ['Discover your platform', 'Choose your account', 'Start your journey'] : ['Client onboarding', 'Account administration', 'Partner reporting'];
+  return <div className={`operations-preview operations-${variant}`} aria-label="Illustrative software interface"><div className="operations-title"><span className="operations-mark"><Layers3 size={15} /></span><span>VTX / {variant === 'code' ? 'INTEGRATION WORKSPACE' : variant.toUpperCase()}</span><span className="operations-preview-tag">CONCEPT</span></div>{variant === 'code' ? <div className="operations-code"><p><span>01</span><i>// Define the connection</i></p><p><span>02</span>const integration = {'{'}</p><p><span>03</span>　 source: <em>"trading-platform"</em>,</p><p><span>04</span>　 destination: <em>"broker-core"</em>,</p><p><span>05</span>　 workflow: <em>"account-lifecycle"</em></p><p><span>06</span>{'}'};</p><p><span>07</span><i>// Validate. Connect. Observe.</i></p></div> : <div className="operations-content"><div className="operations-side"><div /><div /><div /><div /></div><div className="operations-body"><span className="operations-label">{variant === 'payments' ? 'CONNECTED PAYMENT WORKFLOWS' : variant === 'web' ? 'YOUR BRAND. YOUR EXPERIENCE.' : 'A CLEARER OPERATIONAL VIEW'}</span><div className="operations-summary">{[Users, Network, ShieldCheck].map((Icon, i) => <div key={i}><Icon size={16} /><span>0{i + 1}</span></div>)}</div>{rows.map((row, i) => <div key={row} className="operations-row"><span className="operations-row-icon">{variant === 'payments' ? <WalletCards size={14} /> : <Check size={14} />}</span><span>{row}</span><span className="operations-state">STEP {i + 1}</span></div>)}</div></div>}</div>;
+}
+
+export function ConnectionDiagram() {
+  return <div className="connection-diagram" aria-label="Trading platform connects CRM, liquidity, payments and reporting"><div className="connection-center"><Network size={28} /><strong>VTX CONNECTED STACK</strong><span>Scope · Integrate · Validate</span></div><div className="connection-lines" aria-hidden="true" /><div className="connection-nodes">{[[Layers3, 'CRM'], [Activity, 'Liquidity'], [WalletCards, 'Payments'], [Code2, 'Reporting']].map(([Icon, label]) => { const ItemIcon = Icon as typeof Layers3; return <div key={String(label)}><ItemIcon size={20} /><span>{String(label)}</span></div>; })}</div><p>Integration availability depends on vendor interfaces and access.</p></div>;
+}
+
+export function InfrastructureBackdrop() {
+  return <div className="infrastructure-backdrop" aria-hidden="true"><div className="infrastructure-grid" />{[Layers3, ShieldCheck, Network, BarChart3, Code2, WalletCards].map((Icon, i) => <div className={`infrastructure-tile infrastructure-tile-${i}`} key={i}><Icon /></div>)}<div className="infrastructure-center"><Layers3 /><span>VTX</span></div></div>;
+}

@@ -3,6 +3,7 @@ import Button from './Button';
 import { metrics } from '../data/siteData';
 import ImageCarousel from './ImageCarsouel';
 import { bannerImage } from '../assests';
+import { useNavigate } from 'react-router-dom';
 function DashboardVisual() {
   const bars = [42, 64, 38, 78, 56, 88, 52, 71, 45, 92, 67, 81];
 
@@ -70,6 +71,7 @@ function DashboardVisual() {
   );
 }
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <>
       <section id="platform" className="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28" >
@@ -93,7 +95,7 @@ export default function Hero() {
               risk management software in one secure operating layer.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button>Contact Sales</Button>
+              <Button onClick={() => navigate('/contact')}>Contact Sales</Button>
               <Button variant="secondary">Explore Platform</Button>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">

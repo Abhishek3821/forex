@@ -79,12 +79,8 @@ export const navItems: NavItem[] = [
   // },
   // { label: 'Pricing' },
   {
-    label: 'Resources',
-    items: ['Blog', 'Knowledge Base', 'Documentation', 'Downloads', 'Release Notes', 'Case Studies', 'FAQ'],
-  },
-  {
     label: 'Company',
-    items: ['About Us', 'Careers', 'Partners', 'Press', 'Contact'],
+    items: ['About Us', 'Contact'],
   },
 ];
 

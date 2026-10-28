@@ -2,6 +2,7 @@ import { Linkedin, Mail, MapPin } from 'lucide-react';
 import { footerLinks, type FooterLinks } from '../data/siteData';
 import { vtxPrimeLogo } from '../assests';
 import { Link } from 'react-router-dom';
+import { navigationLinks } from '../data/navigationLinks';
 
 export default function Footer() {
   return (
@@ -36,7 +37,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-3">
                   {links.map((link) => (
                     <li key={link}>
-                      <a href="#" className="text-sm text-text-muted transition hover:text-primary-light">{link}</a>
+                      {navigationLinks[link] ? <Link to={navigationLinks[link]} className="text-sm text-text-muted transition hover:text-primary-light">{link === 'Contact' ? 'Contact Us' : link === 'About' ? 'About Us' : link}</Link> : <a href="#" className="text-sm text-text-muted transition hover:text-primary-light">{link}</a>}
                     </li>
                   ))}
                 </ul>

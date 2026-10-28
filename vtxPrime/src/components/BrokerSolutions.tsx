@@ -1,5 +1,8 @@
 import SectionHeader from './SectionHeader';
 import { assets, brokerSolutions } from '../data/siteData';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import { navigationLinks } from '../data/navigationLinks';
 
 export default function BrokerSolutions() {
   return (
@@ -18,6 +21,7 @@ export default function BrokerSolutions() {
                 <Icon className="h-8 w-8 text-primary-light" aria-hidden="true" />
                 <h3 className="mt-5 font-display text-xl font-bold text-white">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-text-secondary">{copy}</p>
+                {navigationLinks[title] && <Link to={navigationLinks[title]} className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-primary-light hover:text-accent">Explore Solution <ArrowUpRight size={14} aria-hidden="true" /></Link>}
               </article>
             ))}
           </div>
