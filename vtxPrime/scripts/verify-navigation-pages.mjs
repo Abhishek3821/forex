@@ -47,6 +47,8 @@ try {
     assert.equal((html.match(/aria-pressed="true"/g) || []).length >= 1, true, `${page.name}: selected capability`);
     assert.ok(!/href="(?:undefined|#)"/.test(html), `${page.name}: invalid link`);
     assert.ok(routes.has(page.path), `${page.name}: route missing`);
+    assert.ok(html.includes('rp-layout-'), `${page.name}: distinct layout family`);
+    assert.ok((html.match(/class="signal-graphic /g) || []).length >= 4, `${page.name}: graphical content`);
     console.log(`PASS ${page.path}`);
   }
   for (const category of ['Solutions', 'Technology']) {
@@ -60,6 +62,18 @@ try {
     assert.ok(routes.has(navigationGroupLinks[group.label]), `${group.label}: group route missing`);
     for (const item of group.items || []) assert.ok(routes.has(navigationLinks[item]), `${item}: navbar route missing`);
   }
+  for (const path of ['solutions/forex-brokers', 'solutions/prop-firms', 'solutions/liquidity-providers', 'solutions/white-label', 'solutions/introducing-brokers', 'solutions/asset-managers', 'platform', 'platform/web-trading']) {
+    const route = appRoutes[0].children.find(item => item.path === path);
+    const html = renderToString(React.createElement(MemoryRouter, {}, route.element));
+    assert.ok(html.includes('visual-ribbon '), `${path}: dedicated page graphic`);
+    assert.ok(html.includes('signal-graphic '), `${path}: rendered SVG visual`);
+    console.log(`PASS graphics /${path}`);
+  }
+  const home = appRoutes[0].children.find(item => item.index);
+  const homeHtml = renderToString(React.createElement(MemoryRouter, {}, home.element));
+  assert.ok(homeHtml.includes('home-feature-bento'), 'Home: asymmetrical feature layout');
+  assert.ok(homeHtml.includes('signal-graphic '), 'Home: feature graphics');
+  console.log('PASS home page graphics');
   console.log('PASS every desktop/mobile navbar destination resolves to an application route');
 } finally {
   await unlink(generated);

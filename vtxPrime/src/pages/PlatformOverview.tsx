@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, ArrowDown, ArrowRight, ArrowUpRight, Blocks, ChartNoAxesCombined, Check, CheckCircle2, ChevronDown, CircleDot, Code2, GitBranch, Globe2, Layers3, Monitor, Network, Radio, Route, Server, ShieldCheck, Smartphone, UserCheck, Zap } from 'lucide-react';
@@ -71,7 +72,7 @@ export default function PlatformOverview() {
 
     <section className="po-section po-integration" aria-labelledby="po-integration-title"><div className="po-container"><div className="po-integration-panel"><div className="po-heading"><h2 id="po-integration-title">Complete End-to-End Integration by VTX Prime</h2><p>Bring the full liquidity infrastructure setup into one coordinated project.</p></div><div className="po-integration-grid">{integration.map(({ icon: Icon, title }) => <article key={title}><Icon size={31} /><h3>{title}</h3></article>)}</div><p className="po-integration-note">A practical path to a scalable, connected execution environment.</p></div></div></section>
 
-    <ConnectivityExplorer />
+    <VisualRibbon kind="network" title="A platform is only as strong as its connections." subtitle="Bring your trading experience, provider interfaces and operational systems into the same picture." /><ConnectivityExplorer />
 
     <section className="po-section po-readiness" aria-labelledby="po-readiness-title"><div className="po-container"><div className="po-readiness-heading"><div><p className="po-eyebrow">A CLEAR ROUTE TO LAUNCH</p><h2 id="po-readiness-title">The next step,<br /><em>planned together.</em></h2></div><p>Move from disconnected requirements to a delivery plan your team can follow, with clear ownership at every stage.</p></div><ol className="po-readiness-grid">{readiness.map(({ title, copy }, i) => <li key={title}><div><span>0{i + 1}</span>{i < 3 && <ArrowRight size={17} />}</div><h3>{title}</h3><p>{copy}</p></li>)}</ol><div className="po-platform-links"><span>EXPLORE YOUR PLATFORM</span><Link to="/platform/web-trading">Web <ArrowUpRight size={15} /></Link><Link to="/platform/desktop">Desktop <ArrowUpRight size={15} /></Link><Link to="/platform/mobile-trading">Mobile <ArrowUpRight size={15} /></Link><Link to="/platform/trading-api">Trading API <ArrowUpRight size={15} /></Link></div></div></section>
 

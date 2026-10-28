@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowLeftRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, FileCheck2, Globe2, KeyRound, Layers3, LockKeyhole, Network, PieChart, Plug, Route, Server, ShieldCheck, SlidersHorizontal, Users, Zap } from 'lucide-react';
@@ -72,7 +73,7 @@ export default function AssetManagers() {
 
     <section className="am-section am-benefits" aria-labelledby="am-benefits-title"><div className="am-container"><h2 className="am-lined-heading am-centered" id="am-benefits-title">Major Benefits for Brokers and Asset Managers</h2><ul className="am-benefit-grid">{benefits.map(({ icon: Icon, label }) => <li key={label}><span className="am-icon-circle"><Icon size={21} /></span><span>{label}</span></li>)}</ul><p className="am-benefit-note">A modern, scalable, multi-asset technology foundation designed around performance, operational reliability and a connected market experience.</p></div></section>
 
-    <PortfolioWorkspace />
+    <VisualRibbon kind="allocation" title="Every account. A clearer perspective." subtitle="Bring account groups, allocation workflows and operational visibility into one considered workspace." /><PortfolioWorkspace />
 
     <section className="am-section am-roadmap" aria-labelledby="am-roadmap-title"><div className="am-container"><div className="am-roadmap-heading"><div><p className="am-eyebrow">A PRACTICAL PATH FORWARD</p><h2 id="am-roadmap-title">From your requirements<br />to <span className="am-gradient">launch readiness.</span></h2></div><p>Connect each part of the project with a clear plan, defined dependencies and acceptance checks your team can follow.</p></div><ol className="am-roadmap-grid">{roadmap.map(({ icon: Icon, title, copy }, i) => <li key={title}><div className="am-roadmap-top"><span>0{i + 1}</span><Icon size={25} /></div><h3>{title}</h3><p>{copy}</p></li>)}</ol><div className="am-roadmap-note"><ShieldCheck size={21} /><p>Account mandates, permissions and operating responsibilities are mapped into the project from the start.</p></div></div></section>
 

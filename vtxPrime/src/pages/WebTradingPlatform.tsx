@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, CircleArrowRight, Globe2, Layers3, LockKeyhole, Monitor, Network, Plug, Server, ShieldCheck, SlidersHorizontal, Smartphone, UserCheck, Zap } from 'lucide-react';
@@ -72,7 +73,7 @@ export default function WebTradingPlatform() {
       <article className="wt-setup-row wt-step-reverse"><div className="wt-step-copy"><span className="wt-step-number">4</span><h3>Access MetaTrader 5</h3><p>Guide clients to the applications and access methods approved by their broker, which may include:</p><ul><li>Windows and macOS access</li><li>iOS and Android apps</li><li>WebTrader in a supported browser</li></ul><p>Keep account instructions and platform access connected across devices.</p><Link className="wt-text-link" to="/platform/mobile-trading">Explore mobile trading <ArrowUpRight size={16} /></Link></div><div className="wt-phone-art"><PhonePreview /></div></article>
     </div></div></section>
 
-    <InteractiveWorkspace />
+    <VisualRibbon kind="market" title="A better view of your trading environment." subtitle="Connect market context, account journeys and browser workspaces around the way your clients trade." /><InteractiveWorkspace />
 
     <section className="wt-section wt-roadmap" aria-labelledby="wt-roadmap-title"><div className="wt-container"><div className="wt-roadmap-heading"><div><p className="wt-eyebrow">FROM YOUR REQUIREMENTS TO LAUNCH</p><h2 id="wt-roadmap-title">A clear plan.<br /><em>A stronger foundation.</em></h2></div><p>Connect each part of your deployment with defined responsibilities, dependencies and acceptance checks.</p></div><ol className="wt-roadmap-grid">{roadmap.map(({ icon: Icon, title, copy },i) => <li key={title}><div><span>0{i+1}</span><Icon size={27} /></div><h3>{title}</h3><p>{copy}</p></li>)}</ol><div className="wt-roadmap-note"><ShieldCheck size={19} /><p>Platform access, licensing and provider compatibility are reviewed as part of the project scope.</p></div></div></section>
 

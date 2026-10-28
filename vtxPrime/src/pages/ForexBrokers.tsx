@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { Activity, ArrowDown, ArrowUpRight, Blocks, Code2, Globe2, Layers3, Network, ShieldCheck, Users, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ConnectionDiagram, OperationsPreview, TradingTerminal } from '../components/TradingVisuals';
@@ -61,7 +62,7 @@ export default function ForexBrokers() {
     <section className="solution-section forex-expertise" id="broker-expertise"><div className="container-page"><SolutionHeading eyebrow="OUR TECHNOLOGY FOCUS" title="Technical depth. A practical perspective." copy="Bring your requirements, current systems and operating challenges into the same conversation." /><div className="forex-expertise-grid">{expertise.map(item => <Link key={item.title} to="/contact?service=Forex%20Brokerage%20Setup" className="forex-expertise-card">{item.image ? <img src={item.image} loading="lazy" alt="" /> : <div className="forex-expertise-preview">{item.preview}</div>}<div><span>{item.copy}</span><h3>{item.title}</h3></div><ArrowUpRight size={23} aria-hidden="true" /></Link>)}</div></div></section>
 
     <section className="solution-section forex-process" id="broker-process"><div className="container-page"><SolutionHeading eyebrow="A PLAN YOU CAN FOLLOW" title="From the first conversation to launch readiness." /><div className="forex-process-grid">{[['Discover', 'Map your business, user journeys, platform access and vendor dependencies.'], ['Design & connect', 'Agree the configuration and integrations, with clear ownership of each layer.'], ['Validate', 'Test representative client and operator journeys, including exception and recovery scenarios.'], ['Hand over', 'Review the acceptance checklist, documentation and operating responsibilities.']].map(([title, copy], i) => <article key={title}><span>0{i + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>
-    <SolutionFAQ items={faqs} />
+    <VisualRibbon kind="network" title="Your brokerage, connected end to end." subtitle="Bring client operations, liquidity and the trader experience into a coordinated technology plan." /><SolutionFAQ items={faqs} />
     <SolutionCTA title="Elevate your brokerage. Connect the whole picture." copy="Start with your goals. Together, define the technology and operational workflows that move your business forward." service="Forex Brokerage Setup" />
   </div>;
 }

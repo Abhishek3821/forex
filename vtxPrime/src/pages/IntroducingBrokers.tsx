@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowUpRight, BarChart3, Check, GitBranch, Globe2, Layers3, Link2, Network, Plug, Radar, Server, ShieldCheck, Users, Zap } from 'lucide-react';
@@ -66,7 +67,7 @@ export default function IntroducingBrokers() {
 
     <section className="ib-section ib-why" aria-labelledby="ib-why-title"><div className="ib-container"><div className="ib-two-column"><div><p className="ib-eyebrow">THE TECHNOLOGY BEHIND EVERY CONNECTION</p><h2 id="ib-why-title">Why Choose VTX Prime for Liquidity Provider Integration</h2><p>Connecting multiple providers brings challenges: latency, inconsistent pricing, fragmented workflows and technical complexity. We bring integration planning, platform configuration and operational visibility together around your requirements.</p></div><div className="ib-strength-grid">{strengths.map(({ icon: Icon, title }) => <article key={title}><Icon size={20} /><h3>{title}</h3></article>)}</div></div><p className="ib-section-note">Build towards secure, reliable and coordinated liquidity connections, with clearer execution workflows, exposure visibility and a more consistent client experience.</p></div></section>
 
-    <PartnerToolkit />
+    <VisualRibbon kind="globe" title="More relationships. A wider perspective." subtitle="Connect partner journeys, account information and the market infrastructure behind your network." /><PartnerToolkit />
 
     <section className="ib-section ib-launch" aria-labelledby="ib-launch-title"><div className="ib-container"><div className="ib-launch-heading"><div><p className="ib-eyebrow">FROM FIRST CONVERSATION TO LAUNCH</p><h2 id="ib-launch-title">A clear route to<br /><span className="ib-gradient">your next connection.</span></h2></div><p>Move forward with a practical plan, agreed dependencies, and a team that understands how your partners and platforms fit together.</p></div><ol className="ib-launch-steps">{steps.map(({ title, copy }, i) => <li key={title}><span className="ib-step-marker">0{i + 1}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol><div className="ib-final-cta"><div><p className="ib-eyebrow">LET’S BUILD YOUR NEXT CHAPTER</p><h3>Connect your technology.<br />Grow your partner network.</h3></div><Link className="ib-outline-button" to="/contact?service=Partnership">Discuss Your Project <ArrowUpRight size={22} /></Link></div></div></section>
   </div>;

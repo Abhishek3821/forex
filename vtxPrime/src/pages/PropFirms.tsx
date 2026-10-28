@@ -1,3 +1,4 @@
+import { VisualRibbon } from '../components/DesignGraphics';
 import { useState } from 'react';
 import { ArrowDown, BarChart3, ChevronDown, Flag, Layers3, Network, ShieldCheck, Smartphone, Target, Users } from 'lucide-react';
 import { InfrastructureBackdrop, PhonePreview, TradingTerminal } from '../components/TradingVisuals';
@@ -47,7 +48,7 @@ export default function PropFirms() {
 
     <section className="prop-platform-detail prop-platform-charting solution-section"><div className="container-page solution-split"><div><p className="solution-eyebrow">CHARTING & TRADER WORKSPACES</p><h2>A clearer workspace<br /><span>for every trading decision.</span></h2><p className="solution-body-copy">If TradingView charting is part of your requirements, begin with licensing and technical compatibility. Define how charting, watchlists and account information should work within the complete trader experience.</p><SolutionChecklist items={['Review charting licences and integration access', 'Define watchlists, layouts and account context', 'Map the handoff from analysis to order workflows', 'Plan consistent views across supported devices', 'Validate data and trading-interface compatibility']} /><SolutionLink service="Prop Firm Technology">Discuss TradingView Requirements</SolutionLink></div><div className="prop-charting-art"><TradingTerminal /><span className="prop-platform-badge">ILLUSTRATIVE WORKSPACE / NOT A THIRD-PARTY PRODUCT</span></div></div></section>
 
-    <SolutionFAQ items={[
+    <VisualRibbon kind="security" title="Clear rules. Visible progress." subtitle="Connect programme configuration, account oversight and the journey behind every evaluation." /><SolutionFAQ items={[
       ['Can you build around our existing evaluation rules?', 'Discovery can map your programme phases, targets, loss-limit definitions and exception workflows. The implementation scope depends on platform events, available data and the level of control exposed by your vendors.'],
       ['Does this page offer a funded trading account?', 'No. This is a technology service page for prop firm operators. Account offers, programme terms, funding decisions and trader relationships belong to the operator.'],
       ['Is a downloadable app available here?', 'The mobile workspace is an illustrative concept. Use the demo enquiry to discuss supported devices, delivery options and your required programme workflows.'],
