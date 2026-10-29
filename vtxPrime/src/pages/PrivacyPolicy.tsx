@@ -1,3 +1,4 @@
+import { HeroAtmosphere, HeroGraphics } from '../components/HeroGraphics';
 const sections = [
   ['Information we collect', 'We may collect information you provide directly, including your name, business email address, company details, and the contents of messages you send to us. We may also collect technical information such as your IP address, browser type, device information, and how you use our website.'],
   ['How we use information', 'We use information to respond to enquiries, provide and improve our products and services, maintain the security and performance of our website, communicate relevant business updates, and comply with legal obligations.'],
@@ -14,10 +15,10 @@ export default function PrivacyPolicy() {
     <article className="relative overflow-hidden pb-24 pt-32 sm:pt-40">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-radial-blue opacity-50" />
       <div className="container-page relative max-w-4xl">
-        <p className="eyebrow">Legal</p>
+        <header className="privacy-hero-enhanced hero-enhanced"><HeroAtmosphere /><p className="eyebrow">Legal</p>
         <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-6xl">Privacy Policy</h1>
         <p className="mt-5 text-sm text-text-muted">Effective date: 27 October 2026</p>
-        <p className="mt-8 max-w-3xl text-lg leading-8 text-text-secondary">
+        <HeroGraphics primary="security" secondary="layers" label="Privacy by design" /></header><p className="mt-8 max-w-3xl text-lg leading-8 text-text-secondary">
           VTX Prime respects your privacy. This policy explains what information we collect through our website, why we use it, and the choices available to you.
         </p>
         <div className="mt-8 rounded-xl border border-primary/30 bg-primary/10 p-6">

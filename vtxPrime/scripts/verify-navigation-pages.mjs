@@ -74,6 +74,22 @@ try {
   assert.ok(homeHtml.includes('home-feature-bento'), 'Home: asymmetrical feature layout');
   assert.ok(homeHtml.includes('signal-graphic '), 'Home: feature graphics');
   console.log('PASS home page graphics');
+  const seen = new Set();
+  for (const route of appRoutes[0].children) {
+    if (route.path && ['about', 'contact-us', 'forex-broker', 'forex-brokers', 'prop-firms', 'liquidity-providers', 'white-label', 'introducing-brokers', 'asset-managers'].includes(route.path)) continue;
+    const html = renderToString(React.createElement(MemoryRouter, {}, route.element));
+    const firstSectionEnd = html.indexOf('</section>');
+    const hero = firstSectionEnd === -1 ? html : html.slice(0, firstSectionEnd);
+    const path = route.index ? '/' : `/${route.path}`;
+    assert.ok(hero.includes('hero-enhanced'), `${path}: enhanced hero`);
+    assert.ok(!hero.includes('hero-atmosphere'), `${path}: hero background effect removed`);
+    assert.ok(hero.includes('hero-graphic-primary'), `${path}: primary hero graphic`);
+    assert.ok(hero.includes('hero-graphic-secondary'), `${path}: secondary hero graphic`);
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${path}: one main heading after hero update`);
+    seen.add(path);
+  }
+  assert.equal(seen.size, 26, 'All primary page heroes covered');
+  console.log(`PASS enhanced hero and two graphics on ${seen.size} primary pages`);
   console.log('PASS every desktop/mobile navbar destination resolves to an application route');
 } finally {
   await unlink(generated);

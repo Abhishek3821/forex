@@ -1,3 +1,4 @@
+import { HeroAtmosphere, HeroGraphics } from './HeroGraphics';
 import { ArrowUpRight, CandlestickChart, Cpu, Shield, TrendingUp, type LucideIcon } from 'lucide-react';
 import Button from './Button';
 import { metrics } from '../data/siteData';
@@ -31,7 +32,7 @@ function DashboardVisual() {
               </div>
             </div>
             <div className="relative h-64 rounded-lg border border-border bg-background/80 p-4">
-              <div className="absolute inset-0 bg-grid-lines bg-[size:36px_36px] opacity-30" aria-hidden="true" />
+              <HeroAtmosphere /><div className="absolute inset-0 bg-grid-lines bg-[size:36px_36px] opacity-30" aria-hidden="true" />
               <svg className="relative h-full w-full" viewBox="0 0 520 220" role="img" aria-label="Trading platform price chart">
                 <defs>
                   <linearGradient id="lineFill" x1="0" x2="0" y1="0" y2="1">
@@ -74,7 +75,7 @@ export default function Hero() {
   const navigate = useNavigate();
   return (
     <>
-      <section id="platform" className="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28" >
+      <section id="platform" className="hero-enhanced home-hero-enhanced relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28" >
         <div className="absolute inset-0 bg-grid-lines bg-[size:48px_48px] opacity-25" aria-hidden="true" />
         <div className="absolute inset-0 bg-radial-blue" aria-hidden="true" />
         <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl animate-pulse-glow" aria-hidden="true" />
@@ -120,7 +121,7 @@ export default function Hero() {
               ))}
             </div>
           </div>
-          <DashboardVisual />
+          <div className="home-hero-scene"><DashboardVisual /><HeroGraphics primary="market" secondary="network" label="Your connected trading foundation" /></div>
         </div>
 
       </section>

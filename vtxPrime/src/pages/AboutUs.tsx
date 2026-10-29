@@ -1,3 +1,4 @@
+import { HeroAtmosphere, HeroGraphics } from '../components/HeroGraphics';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Blocks, Code2, Globe2, Layers3, Monitor, Network, ShieldCheck, TrendingUp, Users, WalletCards } from 'lucide-react';
@@ -25,8 +26,8 @@ export default function AboutUs() {
   }, []);
 
   return <div className="about-page">
-    <section className="about-hero"><div className="container-page about-hero-grid">
-      <div className="about-hero-copy"><p className="about-eyebrow"><span />ABOUT VTX PRIME</p><h1>Trading technology.<br /><span>A shared ambition.</span></h1><p className="about-lead">A connected foundation for the businesses shaping the future of trading.</p><p>VTX Prime brings trading platforms, brokerage operations and technology infrastructure into a clearer, more connected ecosystem. We focus on the systems behind the experience—from the first client interaction to account management, connectivity and reporting.</p><p>Whether you’re planning a new brokerage or refining an existing operation, start with technology shaped around the way your business works.</p><a href="#what-we-do" className="about-button">Explore Our Solutions <ArrowRight size={18} aria-hidden="true" /></a></div>
+    <section className="about-hero hero-enhanced"><HeroAtmosphere /><div className="container-page about-hero-grid">
+      <div className="about-hero-copy"><p className="about-eyebrow"><span />ABOUT VTX PRIME</p><h1>Trading technology.<br /><span>A shared ambition.</span></h1><p className="about-lead">A connected foundation for the businesses shaping the future of trading.</p><p>VTX Prime brings trading platforms, brokerage operations and technology infrastructure into a clearer, more connected ecosystem. We focus on the systems behind the experience—from the first client interaction to account management, connectivity and reporting.</p><p>Whether you’re planning a new brokerage or refining an existing operation, start with technology shaped around the way your business works.</p><a href="#what-we-do" className="about-button">Explore Our Solutions <ArrowRight size={18} aria-hidden="true" /></a><HeroGraphics primary="globe" secondary="network" label="People, platforms and purpose" /></div>
       <div className="about-hero-collage"><figure className="about-hero-tall"><AboutArtwork variant="technology" /><figcaption><span>CONNECTED BY DESIGN</span><strong>One vision.<br />Every connection.</strong></figcaption></figure><figure className="about-hero-small"><AboutArtwork variant="global" /></figure><figure className="about-hero-small"><AboutArtwork variant="collaboration" /></figure><span className="about-collage-tag"><span />VTX PRIME / TECHNOLOGY THAT CONNECTS</span></div>
     </div></section>
 

@@ -1,3 +1,4 @@
+import { HeroAtmosphere, HeroGraphics } from '../components/HeroGraphics';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRight, Check, CheckCircle2, ChevronDown, Copy, Globe2, Mail, MessageSquare, Send, ShieldCheck } from 'lucide-react';
@@ -63,11 +64,11 @@ export default function ContactUs() {
     <section className="contact-page">
       <div className="contact-glow" aria-hidden="true" />
       <div className="container-page relative">
-        <div className="contact-heading">
+        <div className="contact-heading hero-enhanced"><HeroAtmosphere />
           <span className="contact-kicker"><span aria-hidden="true" /> CONTACT VTX PRIME</span>
           <h1>Let’s Build <span>Together.</span></h1>
           <p>Tell us what you have in mind. We’ll help you find the right<br className="hidden sm:block" /> technology for your next chapter.</p>
-        </div>
+        <HeroGraphics primary="globe" secondary="network" label="Your next connection starts here" /></div>
 
         <div className="contact-shell">
           <div className="contact-form-intro"><span className="contact-intro-icon"><MessageSquare size={19} aria-hidden="true" /></span><div><h2>Start a conversation</h2><p>A few details. A clearer way forward.</p></div><span className="contact-step">01 / LET’S CONNECT</span></div>
